@@ -12,11 +12,13 @@ namespace YmypMovieProject.WebAPI.Controllers;
 public class DirectorsController : ControllerBase
 {
     private readonly IDirectorService _directorService;
+    private readonly IMapper _mapper;
 
 
     public DirectorsController(IDirectorService directorService, IMapper mapper)
     {
         _directorService = directorService;
+        
 
     }
     //[httpget]
