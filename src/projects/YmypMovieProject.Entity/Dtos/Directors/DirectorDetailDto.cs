@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YmypMovieProject.Entity.Dtos.Movies;
 
 namespace YmypMovieProject.Entity.Dtos.Directors
 {
@@ -13,7 +14,6 @@ namespace YmypMovieProject.Entity.Dtos.Directors
     string LastName,
     string ImageUrl,
     DateTime BirthDate,
-    string Description) : IResponseDto;
-
-
+    string Description,
+    ICollection<MovieResponseDto> Movies) : IResponseDto;
 }

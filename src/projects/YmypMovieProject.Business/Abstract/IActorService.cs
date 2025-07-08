@@ -9,7 +9,9 @@ using YmypMovieProject.Entity.Entities;
 
 namespace YmypMovieProject.Business.Abstract;
 
-public interface IActorService : IGenericService<Actor, ActorResponseDto, ActorAddRequestDto, ActorUpdateRequestDto>
+public interface IActorService : 
+    IGenericService<Actor, ActorResponseDto, ActorAddRequestDto, ActorUpdateRequestDto>,
+    IGenericServiceAsync<Actor, ActorResponseDto, ActorAddRequestDto, ActorUpdateRequestDto>
 {
     //List<Actor> GetByFirstName(string firstname);
     //List<Actor> GetByLastName(string lasttname);

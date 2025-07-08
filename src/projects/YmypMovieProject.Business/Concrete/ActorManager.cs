@@ -13,7 +13,7 @@ using YmypMovieProject.Entity.Entities;
 namespace YmypMovieProject.Business.Concrete
 {
 
-    public sealed class ActorManager : IActorService
+    public sealed class ActorManager //: IActorService
     {
         private readonly IActorRepository _actorRepository;
         private readonly IMapper _mapper;
@@ -67,7 +67,32 @@ namespace YmypMovieProject.Business.Concrete
             return dto;
         }
 
-        
+        public Task InsertAsync(ActorAddRequestDto dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task ModifyAsync(ActorUpdateRequestDto dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RemoveAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ICollection<ActorResponseDto>> GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ActorResponseDto> GetByIdAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+
 
 
         //private readonly IActorRepository _actorRepository;

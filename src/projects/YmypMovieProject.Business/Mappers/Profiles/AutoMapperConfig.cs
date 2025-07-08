@@ -20,11 +20,13 @@ public sealed class AutoMapperConfig : Profile
         CreateMap<Category, CategoryResponseDto>();
         CreateMap<CategoryAddRequestDto, Category>();
         CreateMap<CategoryUpdateRequestDto, Category>();
-
+        CreateMap<Category, CategoryDetailDto>();
+  
         //Mapping Configuration for Director entity and DTOs
         CreateMap<Director, DirectorResponseDto>();
         CreateMap<DirectorAddRequestDto, Director>();
         CreateMap<DirectorUpdateRequestDto, Director>();
+        CreateMap<Director, DirectorDetailDto>();
 
         //Mapping configuration for Movie entity and DTOs
         CreateMap<Movie, MovieResponseDto>();

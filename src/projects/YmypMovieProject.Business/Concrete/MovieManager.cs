@@ -12,7 +12,7 @@ using YmypMovieProject.Entity.Entities;
 
 namespace YmypMovieProject.Business.Concrete
 {
-    public sealed class MovieManager : IMovieService
+    public sealed class MovieManager //: IMovieService
     {
         private readonly IMovieRepository _movieRepository;
         private readonly IMapper _mapper;
@@ -73,6 +73,31 @@ namespace YmypMovieProject.Business.Concrete
 
             var movieDetails = _mapper.Map<List<MovieDetailDto>>(movies);
             return movieDetails;
+        }
+
+        public async Task InsertAsync(MovieAddRequestDto dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task ModifyAsync(MovieUpdateRequestDto dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RemoveAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ICollection<MovieResponseDto>> GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<MovieResponseDto> GetByIdAsync(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

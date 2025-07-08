@@ -1,4 +1,5 @@
-﻿using Core.Entity;
+﻿using Core.Business.Utilites.Results;
+using Core.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ public interface IGenericService<TEntity,TResponseDto,TCreateDto,TUpdateDto>
     where TCreateDto : ICreateDto
     where TUpdateDto : IUpdateDto
 {
-    void Insert(TCreateDto dto);
-    void Modify(TUpdateDto dto);
-    void Remove(Guid id);
-    ICollection<TResponseDto> GetAll();
-    TResponseDto GetById(Guid id);
+    IResult Insert(TCreateDto dto);
+    IResult Modify(TUpdateDto dto);
+    IResult Remove(Guid id);
+    IDataResult<ICollection<TResponseDto>> GetAll(bool deleted=false);
+    IDataResult<TResponseDto> GetById(Guid id);
 }

@@ -8,6 +8,6 @@ using YmypMovieProject.Entity.Entities;
 
 namespace YmypMovieProject.DataAccess.Repositories.Abstract;
 
-public interface ICategoryRepository : IGenericRepository<Category>
+public interface ICategoryRepository : IGenericRepository<Category>, IGenericRespositoryAsync<Category>
 {
 }

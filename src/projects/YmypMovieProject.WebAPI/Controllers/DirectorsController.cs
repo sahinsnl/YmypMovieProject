@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using YmypMovieProject.Business.Abstract;
+using YmypMovieProject.Entity.Dtos.Directors;
 using YmypMovieProject.Entity.Entities;
 
 namespace YmypMovieProject.WebAPI.Controllers;
@@ -18,62 +19,76 @@ public class DirectorsController : ControllerBase
     public DirectorsController(IDirectorService directorService, IMapper mapper)
     {
         _directorService = directorService;
-        
+
 
     }
-    //[httpget]
-    //public ıactionresult getall()
-    //{
-    //    var director = _directorservice.getall();
-    //    return ok(director);
-    //}
-    //[httpget("fullınfo")]
-    //public ıactionresult getfullınfo()
-    //{
-    //    var directors = _directorservice.getallfullınfo();
-    //    var dto = directors.select(d => new
-    //    {
-    //        ıd = d.ıd,
-    //        adi = d.firstname,
-    //        soyadi = d.lastname,
-    //        resim = d.ımageurl,
-    //        dogumtarihi = d.birthdate,
-    //        aciklama = d.description,
-    //        filmleri = d.movies.select(m => new
-    //        {
-    //            film = m.name,
-    //            kategori = m.category.name,
-    //            m.category.description
-    //        }).tolist()
-    //    }).tolist();
-    //    return ok(dto);
-    //}
+    [HttpGet]
+    public IActionResult GetAll()
+    {
+        var result = _directorService.GetAll();
+        if (!result.Success)
+        {
+            return BadRequest(result.Message);
+        }
+        return Ok(result.Data);
+    }
+    [HttpGet("fullınfo")]
+    public IActionResult GetFullInfo()
+    {
+        var result = _directorService.GetAllFullInfo();
+        if (!result.Success)
+        {
+            return BadRequest(result.Message);
+        }
+        return Ok(result.Data);
+    }
 
-    // [HttpGet("{id}")]
-    //public IActionResult GetDirector(string id)
-    //{
-    //    //Director director = _directorService.GetById(Guid.Parse(id));
-    //    //var dto = new
-    //    //{
-    //    //    director.Id,
-    //    //    director.FirstName,
-    //    //    director.LastName,
-    //    //    director.ImageUrl,
-    //    //    director.BirthDate,
-    //    //    director.Description,
-    //    //    Movies = director.Movies.Select(m => new
-    //    //    {
-    //    //        m.Name
-    //    //    }).ToList()
-    //    //};
-    //    //return Ok(director);
-    //}
+    [HttpGet("{id}")]
+    public IActionResult GetDirector(Guid id)
+    {
+        var result = _directorService.GetById(id);
+        if (!result.Success)
+        {
+            return NotFound(result.Message);
+        }
+        return Ok(result.Data);
+    }
 
-    //[HttpGet("GetAllIsActive")]
+    [HttpPost]
+    public IActionResult CreateDirector(DirectorAddRequestDto dto)
+    {
+        var result = _directorService.Insert(dto);
+        if (!result.Success)
+        {
+            return BadRequest(result.Message);
+        }
+        return Ok(result.Message);
+    }
+    [HttpPut]
+    public IActionResult UpdateDirector(DirectorUpdateRequestDto dto)
+    {
+        var result = _directorService.Modify(dto);
+        if (result.Success)
+        {
+            return Ok(result.Message);
+        }
+        return BadRequest(result.Message);
+    }
+    [HttpDelete("{id}")]
+    public IActionResult DeleteDirector(Guid id)
+    {
+        var result = _directorService.Remove(id);
+        if (!result.Success)
+        {
+            return BadRequest(result.Message);
+        }
+        return Ok(result.Message);
+    }
+    //[HttpGet("getallısactive")]
     //public IActionResult GetAllIsActive()
     //{
-    //    //var directors = _directorService.GetByIsActive();
-    //    //return Ok(directors);
+    //    //var directors = _directorservice.getbyısactive();
+    //    //return ok(directors);
 
     //}
 }
